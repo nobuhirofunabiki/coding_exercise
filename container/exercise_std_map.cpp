@@ -3,7 +3,8 @@
 
 int main(int argc, char** argv) {
 
-    int a=1;
+    int c = 1;
+    int a = 0;
     
     // Simple test
     std::map<unsigned int, std::string> map_temp;
@@ -41,7 +42,7 @@ int main(int argc, char** argv) {
     map_nested[1].insert(std::pair<unsigned int, std::string>(4, "temp4"));
     map_nested[2].insert(std::pair<unsigned int, std::string>(5, "temp5"));
     map_nested[2].insert(std::pair<unsigned int, std::string>(6, "temp6"));
-    map_nested[3].insert(std::pair<unsigned int, std::string>(7, "temp7"));
+    // map_nested[3].insert(std::pair<unsigned int, std::string>(7, "temp7"));
 
     for (auto itr = map_nested.begin(); itr != map_nested.end(); itr++) {
         std::cout << "Group : " << itr->first << std::endl;
@@ -49,6 +50,16 @@ int main(int argc, char** argv) {
             std::cout << "\t No." << itr_child->first << " : " << itr_child->second << std::endl;
         }
     }
+
+    // How to access to the last element
+    // .end() is the iterator which expresses the 
+
+    auto last_itr = map_nested.end();
+    last_itr--;
+    auto last_itr_child = (last_itr->second).end();
+    last_itr_child--;
+
+    std::cout << last_itr_child->first << std::endl;
 
     return 0;
 }
