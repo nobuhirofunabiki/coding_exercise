@@ -5,6 +5,7 @@ int main(int argc, char** argv) {
 
     int c = 1;
     int a = 0;
+    int b = 1;
     
     // Simple test
     std::map<unsigned int, std::string> map_temp;
