@@ -12,12 +12,12 @@ int main(){
     std::map<unsigned int, Eigen::Vector3d> target_est;
     std::map<unsigned int, Eigen::Vector3d> target_true;
 
-    node[0] << 5.0, 1.0, 1.0;
-    node[1] << 10.0, 5.0, 3.0;
-    node[2] << -8.0, 4.0, -5.0;
-    node[3] << -7.0, -5.0, 2.0;
-    node[4] << -15.0, 5.0, 8.0;
-    node[5] << 15.0, -2.0, 5.0;
+    node[0] << 18.4224, -0.562895, 3.521;
+    node[1] << 9.28725, -0.0562896, 1.71189;
+    node[2] << 17.4298, -0.552626, 3.35312;
+    node[3] << 18.7063, -0.589602, 3.57433;
+    // node[4] << -15.0, 5.0, 8.0;
+    // node[5] << 15.0, -2.0, 5.0;
 
     target_est[0] << 0.2, 0.1, 0.3;
 
@@ -38,6 +38,11 @@ int main(){
         diff_position = target_true[0]-node[i];
         range_obs[i] = diff_position.norm()+dist(engine);
     }
+
+    range_obs[0] = 2.69;
+    range_obs[1] = 8.02;
+    range_obs[2] = 2.71;
+    range_obs[3] = 2.57;
 
     Eigen::Matrix3d A_ini;
     Eigen::Vector3d b_ini;
