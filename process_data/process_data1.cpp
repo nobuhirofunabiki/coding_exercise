@@ -21,8 +21,19 @@ int main() {
 
     for (auto itr = temp.begin(); itr != temp.end(); itr++) {
         auto bounds = std::equal_range(data_example_t.stamp.begin(), data_example_t.stamp.end(), *itr);
-        std::cout << "Bounds from " << std::distance(data_example_t.stamp.begin(), bounds.first);
-        std::cout << " to " << std::distance(data_example_t.stamp.begin(), --bounds.second) << std::endl;
+        auto itr2_begin = std::distance(data_example_t.stamp.begin(), bounds.first);
+        auto itr2_end = std::distance(data_example_t.stamp.begin(), bounds.second);
+        std::cout << "Bounds from " << itr2_begin;
+        std::cout << " to " << itr2_end << std::endl;
+        std::vector<unsigned int> data_extract;
+        for(auto itr2 = itr2_begin; itr2 < itr2_end; itr2++) {
+            data_extract.push_back(data_example_t.data[itr2]);
+        }
+        std::cout << "Connected data with " << *itr << " are ";
+        for (auto itr3 = data_extract.begin(); itr3 < data_extract.end(); itr3++) {
+            std::cout << *itr3 << " ";
+        }
+        std::cout << std::endl;
     }
 }
 
