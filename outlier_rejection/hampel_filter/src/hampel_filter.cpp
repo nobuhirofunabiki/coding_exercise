@@ -2,17 +2,20 @@
 #include <algorithm>
 #include <vector>
 
-void hampelOutlierRejection(std::vector<double> data_input);
+void hampelOutlierRejection(std::vector<double> data_input, 
+                            std::vector<bool> b_outlier_list);
 double calculateMedian(std::vector<double> data_input);
 
 int main(){
     std::vector<double> data_input {5.0, 4.0, 60.0, 4.5, 5.5, 5.2, 6.0};
+    std::vector<bool> b_outlier_list(data_input.size(), false);
 
-    hampelOutlierRejection(data_input);
+    hampelOutlierRejection(data_input, b_outlier_list);
 }
 
 
-void hampelOutlierRejection(std::vector<double> data_input) {
+void hampelOutlierRejection(std::vector<double> data_input, 
+                            std::vector<bool> b_outlier_list) {
     unsigned int data_size = data_input.size();
 
     std::vector<double> sorted_data = data_input;
@@ -53,7 +56,12 @@ void hampelOutlierRejection(std::vector<double> data_input) {
     // std::cout << "\n";
 
     double dx = 3.0*calculateMedian(data_temp3);
-    std::cout << "dx is " << dx << "\n";
+    // std::cout << "dx is " << dx << "\n";
+
+    // for (auto itr : b_outlier_list) {
+    //     std::cout << itr << " ";
+    // }
+    // std::cout << "\n";
 
 }
 
