@@ -7,7 +7,7 @@ void hampelOutlierRejection(std::vector<double> data_input,
                             std::vector<double> data_stamp,
                             std::vector<bool>& b_outlier_list);
 void calculateLocalWindow(std::vector<double> data_input, std::vector<double> data_stamp,
-                          double dx, unsigned int data_index,
+                          double half_window_length, unsigned int data_index,
                           std::vector<double>& local_ref, std::vector<double>& local_var);
 double calculateMedian(std::vector<double> data_input);
 
@@ -19,8 +19,8 @@ int main(){
     hampelOutlierRejection(data_input, data_stamp, b_outlier_list);
 
     std::cout << "outlier list" << "\n";
-    for (auto iOut : b_outlier_list) {
-        std::cout << iOut << " ";
+    for (auto iOutlier : b_outlier_list) {
+        std::cout << iOutlier << " ";
     }
 }
 
@@ -30,33 +30,29 @@ void hampelOutlierRejection(std::vector<double> data_input,
                             std::vector<bool>& b_outlier_list) {
     unsigned int data_size = data_input.size();
 
-    std::vector<double> sorted_data  = data_input;
     std::vector<double> sorted_stamp = data_stamp;
-    std::sort(sorted_data.begin(), sorted_data.end());
     std::sort(sorted_stamp.begin(), sorted_stamp.end());
 
-    double median_value;
-    median_value = calculateMedian(sorted_data);
     double median_stamp;
     median_stamp = calculateMedian(sorted_stamp);
 
-    std::vector<double> data_temp1 = sorted_stamp;
-    std::vector<double> data_temp2 = sorted_stamp;
-    std::vector<double> data_temp3;
-    data_temp1.erase(data_temp1.begin());
-    data_temp2.pop_back();
+    std::vector<double> stamp_temp1 = sorted_stamp;
+    std::vector<double> stamp_temp2 = sorted_stamp;
+    std::vector<double> diff_stamp;
+    stamp_temp1.erase(stamp_temp1.begin());
+    stamp_temp2.pop_back();
 
-    for (int iData = 0; iData < data_temp1.size(); iData++) {
-        data_temp3.push_back(data_temp1[iData] - data_temp2[iData]);
+    for (int iData = 0; iData < stamp_temp1.size(); iData++) {
+        diff_stamp.push_back(stamp_temp1[iData] - stamp_temp2[iData]);
     }
 
-    double dx = 3.0*calculateMedian(data_temp3);
+    double half_window_length = 3.0*calculateMedian(diff_stamp);
 
     std::vector<double> local_ref;
     std::vector<double> local_var;
 
     for (int iData = 0; iData < data_size; iData++) {
-        calculateLocalWindow(data_input, data_stamp, dx, iData, local_ref, local_var);
+        calculateLocalWindow(data_input, data_stamp, half_window_length, iData, local_ref, local_var);
     }
 
     for (int iData = 0; iData < data_size; iData++) {
@@ -68,7 +64,7 @@ void hampelOutlierRejection(std::vector<double> data_input,
 }
 
 void calculateLocalWindow(std::vector<double> data_input, std::vector<double> data_stamp,
-                          double dx, unsigned int data_index,
+                          double half_window_length, unsigned int data_index,
                           std::vector<double>& local_ref, std::vector<double>& local_var) {
 
     // Index related to local window
@@ -76,8 +72,8 @@ void calculateLocalWindow(std::vector<double> data_input, std::vector<double> da
     std::vector<double> data_in_window;
     int data_size = data_stamp.size();
     for (int iData = 0; iData < data_size; iData++) {
-        if (data_stamp[data_index] - dx <= data_stamp[iData]
-            && data_stamp[data_index] + dx >= data_stamp[iData]) {
+        if (data_stamp[data_index] - half_window_length <= data_stamp[iData]
+            && data_stamp[data_index] + half_window_length >= data_stamp[iData]) {
             index_local.push_back(iData);
             data_in_window.push_back(data_input[iData]);
         }
