@@ -25,8 +25,13 @@ int main(int argc, char** argv) {
         } break;
     } 
 
-    for (auto itr = map_temp.begin(); itr != map_temp.end(); itr++) {
-        std::cout << "No." << itr->first << " : " << itr->second << std::endl;
+    // for (auto itr = map_temp.begin(); itr != map_temp.end(); itr++) {
+    //     std::cout << "No." << itr->first << " : " << itr->second << std::endl;
+    // }
+
+    std::cout << "Range-based 'for' of map" << std::endl;
+    for (auto itr : map_temp) {
+        std::cout << "No." << itr.first << " : " << itr.second << std::endl;
     }
 
     // Nested structure of map
