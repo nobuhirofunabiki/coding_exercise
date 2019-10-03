@@ -1,8 +1,12 @@
 #include "myint.h"
 
+MyInt::MyInt() {}
+
 MyInt::MyInt(int num)
 :num_(num)
 {}
+
+MyInt::~MyInt() {}
 
 bool MyInt::isOdd() {
     return (num_ % 2) != 0 ? true : false;

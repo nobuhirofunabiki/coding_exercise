@@ -4,6 +4,7 @@ class MyInt {
     friend class MyIntTest;
 
     public:
+        MyInt();
         MyInt(int num);
         ~MyInt();
         bool isOdd();

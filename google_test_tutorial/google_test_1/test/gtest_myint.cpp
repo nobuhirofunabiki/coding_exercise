@@ -1,11 +1,17 @@
+// How to run gtest
+// 1. make "build" directory
+// 2. $ cd build
+// 3. $ cmake .. (for out-source build)
+// 4. $ make
+// 5. $ cd test
+// 6. $ ./<an executable file name>
+
 #include "gtest/gtest.h"
 #include "myint.h"
 
-namespace {
-
 class MyIntTest : public ::testing::Test {
     protected:
-        int addTwoInts(int a, int b) {my_int.addTwoInts(a, b)}
+        int addTwoInts(int a, int b) {my_int.addTwoInts(a, b);}
     private:
         MyInt my_int;
 };
@@ -26,10 +32,8 @@ TEST_F(MyIntTest, isEven) {
     EXPECT_EQ(false, mi2.isEven());
 }
 
-TEST_F(MyIntTest, addTwoInts) {
+TEST_F(MyIntTest, addTwoIntsTest) {
     int a = 1;
     int b = 2;
-    EXPECT_EQ(3, addTwoInts(a, b));
-}
-
+    EXPECT_EQ(addTwoInts(a, b), 3);
 }
