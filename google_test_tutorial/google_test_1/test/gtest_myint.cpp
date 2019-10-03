@@ -1,11 +1,3 @@
-// How to run gtest
-// 1. make "build" directory
-// 2. $ cd build
-// 3. $ cmake .. (for out-source build)
-// 4. $ make
-// 5. $ cd test
-// 6. $ ./<an executable file name>
-
 #include "gtest/gtest.h"
 #include "myint.h"
 
