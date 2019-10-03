@@ -3,7 +3,12 @@
 
 namespace {
 
-class MyIntTest : public ::testing::Test{};
+class MyIntTest : public ::testing::Test {
+    protected:
+        int addTwoInts(int a, int b) {my_int.addTwoInts(a, b)}
+    private:
+        MyInt my_int;
+};
 
 TEST_F(MyIntTest, isOdd) {
     MyInt mi1 = MyInt(10);
@@ -19,6 +24,12 @@ TEST_F(MyIntTest, isEven) {
 
     MyInt mi2 = MyInt(13);
     EXPECT_EQ(false, mi2.isEven());
+}
+
+TEST_F(MyIntTest, addTwoInts) {
+    int a = 1;
+    int b = 2;
+    EXPECT_EQ(3, addTwoInts(a, b));
 }
 
 }
