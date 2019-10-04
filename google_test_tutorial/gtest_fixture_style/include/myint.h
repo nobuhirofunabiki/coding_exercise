@@ -1,3 +1,5 @@
+#include <iostream>
+
 class MyInt {
 
     // For testing the private functions in gtest
@@ -13,4 +15,8 @@ class MyInt {
     private:
         int num_;
         int addTwoInts(int a, int b);
+        double addTwoDoubles(double a, double b);
+        
+        template <typename TYPE>
+        TYPE addTwoValues(TYPE a, TYPE b);
 };
