@@ -1,11 +1,15 @@
 #include "gtest/gtest.h"
 #include "myint.h"
 
-namespace {
-
 class MyIntTest : public ::testing::Test {
     protected:
-        int addTwoInts(int a, int b) {my_int.addTwoInts(a, b)}
+        int addTwoInts(int a, int b) {
+            return my_int.addTwoInts(a, b);
+        }
+        template <typename TYPE>
+        TYPE addTwoValues(TYPE a, TYPE b) {
+            return my_int.addTwoValues<TYPE>(a, b);
+        }
     private:
         MyInt my_int;
 };
@@ -26,10 +30,14 @@ TEST_F(MyIntTest, isEven) {
     EXPECT_EQ(false, mi2.isEven());
 }
 
-TEST_F(MyIntTest, addTwoInts) {
+TEST_F(MyIntTest, addTwoIntsTest) {
     int a = 1;
     int b = 2;
-    EXPECT_EQ(3, addTwoInts(a, b));
+    EXPECT_EQ(addTwoInts(a, b), 3);
 }
 
+TEST_F(MyIntTest, addTwoValuesTest) {
+    double a = 1;
+    double b = 2;
+    EXPECT_EQ(addTwoValues<double>(a, b), 3);
 }
