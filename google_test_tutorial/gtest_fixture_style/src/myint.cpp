@@ -26,9 +26,3 @@ template <typename TYPE>
 TYPE MyInt::addTwoValues(TYPE a, TYPE b) {
     return a+b;
 }
-
-double MyInt::addTwoDoubles(double a, double b) {
-    // In order to run unittests for any template functions, 
-    // they should be used somewhere in the class and instanciated as following.
-    return addTwoValues<double>(a, b);
-}

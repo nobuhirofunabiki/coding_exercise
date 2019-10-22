@@ -15,7 +15,7 @@ class MyInt {
     private:
         int num_;
         int addTwoInts(int a, int b);
-        double addTwoDoubles(double a, double b);
+        // double addTwoDoubles(double a, double b);
         
         template <typename TYPE>
         TYPE addTwoValues(TYPE a, TYPE b);
