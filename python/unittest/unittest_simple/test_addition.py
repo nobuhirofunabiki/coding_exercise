@@ -5,7 +5,7 @@ class TestAddition(unittest.TestCase):
     def test_addition(self):
         value1 = 2
         value2 = 3
-        expected = 6
+        expected = 5
         actual = addition(value1, value2)
         self.assertEqual(expected, actual)
 
