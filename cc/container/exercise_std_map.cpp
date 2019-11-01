@@ -23,7 +23,11 @@ int main(int argc, char** argv) {
             std::cout << "Wrong argument" << std::endl;
             return 0;
         } break;
-    } 
+    }
+
+    auto itr_1 = map_temp.begin();
+    auto itr_2 = std::next(map_temp.begin());
+    map_temp.erase(itr_1, itr_2);
 
     // for (auto itr = map_temp.begin(); itr != map_temp.end(); itr++) {
     //     std::cout << "No." << itr->first << " : " << itr->second << std::endl;

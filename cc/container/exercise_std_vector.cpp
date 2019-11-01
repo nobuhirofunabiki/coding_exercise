@@ -73,6 +73,7 @@ int main() {
 
     // Erase the first 3 elements
     v_copy.erase(v_copy.begin(), v_copy.begin()+3);
+    // v_copy.erase(v_copy.begin(), std::next(v_copy.begin()));
     std::cout << "The first 3 elements are erased" << "\n";
     for (auto itr : v_copy) {
         std::cout << itr << " ";
