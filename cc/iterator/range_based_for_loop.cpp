@@ -68,5 +68,46 @@ int main() {
     // for (const auto&& i : v3) {std::cout << i << " ";}
     std::cout << "\n";
 
+    // Test4 ----------------------------------------------------
+    std::cout << "Test-4" << std::endl;
+    std::cout << "Erase values in a vector container through range-based-for-loop" << std::endl;
+
+    std::vector<int> v5 {1, 2, 3, 4, 5};
+    unsigned int counter = 0;
+    for (auto&& i : v5) {
+        if (i == 2) {
+            v5.erase(v5.begin()+counter);
+        }
+        counter += 1;
+    }
+    for (const auto& i : v5) {
+        std::cout << i << "\n";
+    }
+    std::cout << "\n";
+
+    // Test5 ----------------------------------------------------
+    std::cout << "Test-5" << std::endl;
+    std::cout << "Erase values in a map container through range-based-for-loop" << std::endl;
+
+    std::map<int, std::string> m2;
+    m2[0] = "test0";
+    m2[1] = "test1";
+    m2[2] = "test2";
+    m2[3] = "test3";
+    m2[4] = "test4";
+
+    unsigned int counter2 = 0;
+    for (auto&& [i, j] : m2) {
+        if (i == 2) {
+            auto itr = m2.find(i);
+            m2.erase(itr);
+            // m2.erase(m2.begin()+counter2); // This does not work.
+        }
+        counter2 += 1;
+    }
+    for (const auto& [i,j] : m2) {
+        std::cout << i << " : " << j << "\n";
+    }
+
     return 0;
 }
