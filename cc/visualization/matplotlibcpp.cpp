@@ -1,3 +1,8 @@
+// (Ref) https://sy-base.com/myrobotics/cpp/cpp_matplotlib/
+// (Ref) https://github.com/lava/matplotlib-cpp
+// compile: 
+// $ g++ <filename>.cpp -I/usr/include/python2.7 -lpython2.7
+
 #include <matplotlib-cpp/matplotlibcpp.h>
 
 namespace plt = matplotlibcpp;
