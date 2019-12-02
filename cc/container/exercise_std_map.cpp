@@ -67,5 +67,21 @@ int main(int argc, char** argv) {
 
     std::cout << last_itr_child->first << std::endl;
 
+    // Search a key element in a map container
+    std::cout << "Search a key element in a map container" << std::endl;
+    std::map<unsigned int, std::string> map_search ={
+        {0, "a"},
+        {1, "b"},
+        {2, "c"}
+    };
+    unsigned int serached_value = 3;
+    auto itr = map_search.find(serached_value);
+    if (itr == map_search.end()) {
+        std::cout << serached_value << " does not exist in the map" << std::endl;
+    }
+    else {
+        std::cout << serached_value << " exists in the map" << std::endl;
+    }
+
     return 0;
 }
