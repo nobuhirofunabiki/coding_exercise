@@ -3,8 +3,9 @@ clear
 close all
 restoredefaultpath
 
-args.value_super = 1;
-args.value_sub = 2;
-args.value_subsub = 3;
+args.variable = 1;
+object_ = DerivedClass(args);
 
-object_ = SubSubClass(args);
+object_.setVariable(4);
+
+object_.makeValueSquareRoot();
